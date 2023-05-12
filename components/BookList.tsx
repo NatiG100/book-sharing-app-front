@@ -4,16 +4,17 @@ import BookListItem from "./BookListItem";
 export interface BookListProp{
     books:TypeBook[],
     title?:string,
-    customCompnt?:React.ReactNode
+    customCompnt?:React.ReactNode,
+    className?:string,
 }
 
-export default function BookList({books,title,customCompnt}:BookListProp){
+export default function BookList({books,title,customCompnt,className=""}:BookListProp){
     return(
         <section title={title||"book-list"}
-            className="w-full max-w-[1000px] ml-auto mr-auto px-14"
+            className={className+" w-full max-w-[1000px] ml-auto mr-auto px-14"}
         >
             {title&&
-                <h2 className="text-2xl lg:text-2xl text-white uppercase font-bold ml-5 mb-6">
+                <h2 className="text-lg lg:text-2xl text-white uppercase font-bold ml-5 mb-6">
                     {title}
                 </h2>
             }

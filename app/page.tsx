@@ -109,9 +109,12 @@ const books:TypeBook[] = [{
 export default function Home() {
   return (
     <div className='w-full '>
-      <AppBar/>
-      <HeroSection/>
-      <BookList books={books} title='popular'/>
+      <div className='w-full relative h-screen'>
+        <HeroSection/>
+        <AppBar/>
+      </div>
+      <BookList books={books} title='popular' className='mt-16'/>
+      <BookList books={books} title='recently uploaded' className='mt-16'/>
       <FooterSection/>
     </div>
   )
