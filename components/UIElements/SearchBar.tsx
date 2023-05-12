@@ -11,7 +11,7 @@ export default function SearchBar(props:SearchBarProps){
                 value={props.value}
                 onChange={props.onChange}
                 className='
-                    ring-1 ring-[#42aa4f] rounded-full
+                    ring-2 ring-[#42aa4f88] rounded-full focus:ring-[#42aa4f]
                     w-full h-full bg-white pl-8 pr-14
                     absolute top-0 bottom-0 left-0 right-0 text-sm
                     
@@ -20,9 +20,9 @@ export default function SearchBar(props:SearchBarProps){
             >
             </input>
             <SearchIcon className='
-                absolute right-4 text-[#42aa4f88] text-4xl
+                absolute right-4 text-[#77dd7f] text-4xl
                 p-2 hover:text-[#42aa4f] transition-colors
-                cursor-pointer
+                cursor-pointer stroke-[3px]
             '
             />
         </div>

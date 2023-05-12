@@ -113,8 +113,8 @@ export default function Home() {
         <HeroSection/>
         <AppBar/>
       </div>
-      <BookList books={books} title='popular' className='mt-16'/>
-      <BookList books={books} title='recently uploaded' className='mt-16'/>
+      <BookList books={books} title='popular' className='mt-20'/>
+      <BookList books={books} title='recently uploaded' className='mt-20'/>
       <FooterSection/>
     </div>
   )

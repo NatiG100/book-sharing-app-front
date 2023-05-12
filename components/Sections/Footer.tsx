@@ -3,8 +3,7 @@ import {FaTelegram,FaInstagram,FaFacebook}from'react-icons/fa';
 import {SiGmail} from 'react-icons/si'
 export default function FooterSection(){
     return(
-        <footer className="flex flex-col items-center gap-5 w-full mr-auto ml-auto max-w-[1420px] py-20">
-            <div className="border-b border-white/30 w-full mb-8"></div>
+        <footer className="flex flex-col items-center gap-5 w-full mr-auto ml-auto max-w-[1420px] py-20 mt-12">
             <Image
                 src="/logo.png"
                 alt="logo"
