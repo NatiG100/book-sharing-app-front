@@ -14,7 +14,7 @@ const handleChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
 }
     return(
         <div className="
-            w-full max-w-[1480px] ml-auto mr-auto 
+            w-full max-w-[1480px] ml-auto mr-auto gap-6
             flex p-6 px-7 items-center justify-between flex-col md:flex-row z-50
         ">
             <Image

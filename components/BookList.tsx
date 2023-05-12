@@ -19,9 +19,9 @@ export default function BookList({books,title,customCompnt}:BookListProp){
             }
             {customCompnt&&customCompnt}
             <div className="
-                grid grid-cols-[1fr] md:grid-cols-[1fr,1fr] 
-                lg:grid-cols-[1fr,1fr,1fr] justify-between
-                xl:grid-cols-[1fr,1fr,1fr,1fr]
+                grid grid-cols-[1fr] sm:grid-cols-[1fr,1fr] 
+                md:grid-cols-[1fr,1fr,1fr] justify-between
+                lg:grid-cols-[1fr,1fr,1fr,1fr]
             ">
                 {books.map((book)=>(
                     <div className="mr-auto ml-auto" key={book._id}>

@@ -30,7 +30,7 @@ export default function BookListItem({book}:BookListItemProps){
                 flex items-center gap-4 mt-1
             ">
                 <div className="flex items-center gap-2"><DownloadIcon/> {book.downloads}</div>
-                <DotIcon className="text-white gap-2"/>
+                <DotIcon className="text-white gap-2 text-[8px]"/>
                 <div className="flex items-center gap-2"><EyeIcon/> {book.view}</div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import AppBar from '@/components/AppBar'
 import BookList from '@/components/BookList'
 import BookListItem from '@/components/BookListItem'
+import FooterSection from '@/components/Sections/Footer'
 import HeroSection from '@/components/Sections/Hero'
 import { TypeBook } from '@/types/types'
 import Image from 'next/image'
@@ -111,6 +112,7 @@ export default function Home() {
       <AppBar/>
       <HeroSection/>
       <BookList books={books} title='popular'/>
+      <FooterSection/>
     </div>
   )
 }
