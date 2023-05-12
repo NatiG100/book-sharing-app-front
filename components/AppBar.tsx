@@ -13,7 +13,10 @@ const handleChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
     setQuery(event.target.value);
 }
     return(
-        <div className="w-full flex p-6 px-7 items-center justify-between flex-col md:flex-row">
+        <div className="
+            w-full max-w-[1480px] ml-auto mr-auto 
+            flex p-6 px-7 items-center justify-between flex-col md:flex-row z-50
+        ">
             <Image
                 src="/logo.png"
                 alt="logo"

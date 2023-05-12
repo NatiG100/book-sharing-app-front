@@ -1,10 +1,12 @@
 import AppBar from '@/components/AppBar'
+import HeroSection from '@/components/Sections/Hero'
 import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className='w-screen max-w-[1420px] ml-auto mr-auto'>
+    <div className='w-full '>
       <AppBar/>
+      <HeroSection/>
     </div>
   )
 }
