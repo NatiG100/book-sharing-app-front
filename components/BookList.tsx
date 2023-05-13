@@ -13,12 +13,14 @@ export default function BookList({books,title,customCompnt,className=""}:BookLis
         <section title={title||"book-list"}
             className={className+" w-full max-w-[1000px] ml-auto mr-auto px-14"}
         >
-            {title&&
-                <h2 className="text-lg lg:text-2xl text-white uppercase font-bold ml-5 mb-6">
-                    {title}
-                </h2>
-            }
-            {customCompnt&&customCompnt}
+            <div className="ml-5 mb-6">
+                {title&&
+                    <h2 className="text-lg lg:text-2xl text-white uppercase font-bold">
+                        {title}
+                    </h2>
+                }
+                {customCompnt&&customCompnt}
+            </div>
             <div className="
                 grid grid-cols-[1fr] sm:grid-cols-[1fr,1fr] 
                 md:grid-cols-[1fr,1fr,1fr] justify-between
