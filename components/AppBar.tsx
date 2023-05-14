@@ -2,16 +2,21 @@
 import Image from "next/image";
 import {   useState } from "react";
 import SearchBar from "./UIElements/SearchBar";
+import { useRouter } from "next/navigation";
 
 export interface AppBarProps {
 
 }
 
 export default function AppBar(props:AppBarProps){
-const [query,setQuery] = useState<string>('');
-const handleChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
-    setQuery(event.target.value);
-}
+    const router = useRouter();
+    const [query,setQuery] = useState<string>('');
+    const handleChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
+        setQuery(event.target.value);
+    }
+    const onSearch = ()=>{
+        router.push(`/books?query=${query}`)
+    }
     return(
         <div className="w-full absolute top-0 left-0 right-0">
             <div className="
@@ -24,7 +29,7 @@ const handleChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
                     width={80}
                     height={100}
                 />
-                <SearchBar value={query} onChange={handleChange}/>
+                <SearchBar value={query} onChange={handleChange} onSearch={onSearch}/>
             </div>
         </div>
     );

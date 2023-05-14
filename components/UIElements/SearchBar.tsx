@@ -1,7 +1,8 @@
 import {FiSearch as SearchIcon} from 'react-icons/fi'
 export interface SearchBarProps{
     value:string,
-    onChange:(event:React.ChangeEvent<HTMLInputElement>)=>void
+    onChange:(event:React.ChangeEvent<HTMLInputElement>)=>void,
+    onSearch:()=>void
 }
 
 export default function SearchBar(props:SearchBarProps){
@@ -24,6 +25,7 @@ export default function SearchBar(props:SearchBarProps){
                 p-2 hover:text-[#42aa4f] transition-colors
                 cursor-pointer stroke-[3px]
             '
+            onClick={props.onSearch}
             />
         </div>
     );
