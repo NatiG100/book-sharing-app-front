@@ -1,8 +1,12 @@
+"use client";
 import BookList from "@/components/BookList";
 import ToggleChip from "@/components/UIElements/ToggleChip";
 import { books } from "@/data";
+import { useSearchParams } from "next/navigation";
 
 export default function SearchResult() {
+    const params = useSearchParams();
+    console.log(params)
     return (
         <>
             <div className="w-full max-w-[1000px] ml-auto mr-auto px-20 flex justify-start items-center gap-3 flex-wrap">
@@ -17,7 +21,7 @@ export default function SearchResult() {
                 title='search result' 
                 className='mt-2'
                 customCompnt={
-                    <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>The art of war</i></u></span></p>
+                    <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>{params.get('query')}</i></u></span></p>
                 }
             />
         </>     

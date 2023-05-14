@@ -14,8 +14,8 @@ export default function SearchBar(props:SearchBarProps){
                 className='
                     ring-2 ring-[#42aa4f88] rounded-full focus:ring-[#42aa4f]
                     w-full h-full bg-white pl-8 pr-14
-                    absolute top-0 bottom-0 left-0 right-0 text-sm
-                    
+                    absolute top-0 bottom-0 left-0 right-0
+                    text-lg
                     '
                 placeholder='Search by title or author'
             >
