@@ -1,5 +1,4 @@
 "use client";
-
 import HeroSection from '@/components/Sections/Hero'
 import './globals.css'
 import { Inter } from 'next/font/google'
