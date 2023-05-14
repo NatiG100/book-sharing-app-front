@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='w-full '>
-          <div className={`w-full relative ${pathName==="/"?"h-screen":"h-[150px]"}`}>
+          <div className={`w-full relative ${pathName==="/"?"h-screen":"h-[200px] md:h-[150px]"}`}>
             {pathName==="/"?<HeroSection/>:<HeaderBackdrop/>}
             <AppBar/>
           </div>
