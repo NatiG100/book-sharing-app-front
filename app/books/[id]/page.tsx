@@ -25,14 +25,14 @@ export default function Book(){
                     />
                     <div>
                         <ToggleChip isOn={false}>Doctrine</ToggleChip>
-                        <p><span><b>Author</b></span> Dr. R.C Sproul</p>
-                        <div className="text-[#8e8e8e] text-sm flex items-center gap-4 mt-1">
+                        <p className="mt-2 text-[14px] text-gray-100"><span className="text-white"><b>Author:</b></span> Dr. R.C Sproul</p>
+                        <div className="text-gray-300 text flex items-center gap-4 mt-1">
                             <div className="flex items-center gap-2">200 pages</div>
                             <DotIcon className="text-white gap-2 text-[8px]"/>
                             <div className="flex items-center gap-2">Published 2008EC</div>
                         </div>
-                        <h3>Excerpt</h3>
-                        <p>
+                        <h3 className="text-white text-lg font-bold mt-6">Excerpt</h3>
+                        <p className="text-gray-400 text-sm mb-6 text-justify">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                         </p>
                         <div className="
@@ -52,7 +52,7 @@ export default function Book(){
                     </div>
                 </div>
             </div>
-            <BookList books={books} customCompnt={<p>Other books from the Author</p>}/>
+            <BookList books={books} title={"Other books from the Author"} className="mt-16"/>
         </div>
     );
 }
