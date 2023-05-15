@@ -11,7 +11,7 @@ export interface BookListProp{
 export default function BookList({books,title,customCompnt,className=""}:BookListProp){
     return(
         <section title={title||"book-list"}
-            className={className+" w-full max-w-[1000px] ml-auto mr-auto px-14"}
+            className={className+" w-full max-w-[1000px] ml-auto mr-auto px-6 sm:px-14 lg:px-0"}
         >
             <div className="ml-5 mb-6">
                 {title&&

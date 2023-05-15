@@ -8,7 +8,7 @@ interface BooksProps{
 export default function Books(props:BooksProps) {
     return (
         <>
-            <div className="w-full max-w-[1000px] ml-auto mr-auto px-20 flex justify-start items-center gap-3 flex-wrap">
+            <div className="w-full max-w-[1000px] ml-auto mr-auto px-11 sm:px-20 lg:px-5 flex justify-start items-center gap-3 flex-wrap">
                 <ToggleChip isOn={true}>All</ToggleChip>
                 <ToggleChip isOn={false}>Doctrine</ToggleChip>
                 <ToggleChip isOn={false}>Practical</ToggleChip>

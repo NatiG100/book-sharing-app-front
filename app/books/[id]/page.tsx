@@ -13,9 +13,9 @@ export default function Book(){
     return(
         <div className="w-full">
 
-            <div className="w-full max-w-[650px] ml-auto mr-auto mt-6">
+            <div className="w-full max-w-[650px] ml-auto mr-auto mt-6 px-8 md:px-0">
                 <h1 className="text-3xl font-bold text-white mb-12 underline">How to study the Scripture</h1>
-                <div className="grid grid-cols-[max-content,1fr] gap-6">
+                <div className="grid grid-rows-[mac-content, max-content] md:grid-cols-[max-content,1fr] gap-6">
                     <Image
                         src='/book-cover/1.jpeg'
                         alt="title"
@@ -52,7 +52,11 @@ export default function Book(){
                     </div>
                 </div>
             </div>
-            <BookList books={books} title={"Other books from the Author"} className="mt-16"/>
+            <BookList 
+                books={books}  
+                className="mt-16"
+                customCompnt={<p className="text-xs md:text-lg font-semibold text-gray-300 bg-gray-800 rounded-md p-1 px-4 md:px-6">Other books from this author</p>}
+            />
         </div>
     );
 }

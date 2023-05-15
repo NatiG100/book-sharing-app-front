@@ -13,7 +13,7 @@ export interface BookListItemProps{
 }
 export default function BookListItem({book}:BookListItemProps){
     return(
-        <Link href={`/books/${book._id}`}>
+        <Link href={`/books/${book._id}`} className="w-max">
             <div className="w-[175px] cursor-pointer hover:-translate-y-2 transition-transform duration-300 m-4">
                 <Image
                     height={800}
