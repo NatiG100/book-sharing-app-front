@@ -8,6 +8,7 @@ import {
 import Button from "@/components/UIElements/Button";
 import BookList from "@/components/BookList";
 import { books } from "@/data";
+import Link from "next/link";
 
 export default function Book(){
     return(
@@ -46,9 +47,11 @@ export default function Book(){
                         <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
                             Download
                         </Button>
-                        <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} onClick={()=>{}} >
-                            Read now
-                        </Button>
+                        <Link href={"/read/astl"}>
+                            <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} onClick={()=>{}} >
+                                Read now
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
