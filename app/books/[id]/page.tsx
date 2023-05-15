@@ -10,7 +10,10 @@ import BookList from "@/components/BookList";
 import { books } from "@/data";
 import Link from "next/link";
 
-export default function Book(){
+interface BookProps{
+    params:{id:string}
+}
+export default function Book({params}:BookProps){
     return(
         <div className="w-full">
 
@@ -47,7 +50,7 @@ export default function Book(){
                         <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
                             Download
                         </Button>
-                        <Link href={"/read/astl"}>
+                        <Link href={`/read/${params.id}`}>
                             <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} onClick={()=>{}} >
                                 Read now
                             </Button>
