@@ -47,9 +47,11 @@ export default function Book({params}:BookProps){
                             <DotIcon className="text-white gap-2 text-[8px]"/>
                             <div className="flex items-center gap-2"><EyeIcon/> {254}</div>
                         </div>
-                        <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
-                            Download
-                        </Button>
+                        <Link href="/book.pdf" download>
+                            <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
+                                Download
+                            </Button>
+                        </Link>
                         <Link href={`/read/${params.id}`}>
                             <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} onClick={()=>{}} >
                                 Read now
