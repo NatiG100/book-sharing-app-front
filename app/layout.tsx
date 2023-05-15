@@ -24,12 +24,18 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className='w-full '>
-          <div className={`w-full relative ${pathName==="/"?"h-screen":"h-[200px] md:h-[150px]"}`}>
-            {pathName==="/"?<HeroSection/>:<HeaderBackdrop/>}
-            <AppBar/>
-          </div>
-          {children}
-          <FooterSection/>
+          {pathName.includes('/read')?
+            children
+          :
+            <>
+              <div className={`w-full relative ${pathName==="/"?"h-screen":"h-[200px] md:h-[150px]"}`}>
+                {pathName==="/"?<HeroSection/>:<HeaderBackdrop/>}
+                <AppBar/>
+              </div>
+              {children}
+              <FooterSection/>
+            </>
+          }
         </div>
       </body>
     </html>
