@@ -29,7 +29,7 @@ export default async function Books(props:BooksProps) {
             </div>
             <BookList 
                 books={bookList.data} 
-                title={props.searchParams.query!==""&&props.searchParams.query ?'search result':undefined} 
+                title={props.searchParams.query!==""&&props.searchParams.query ?'search result':"discover"} 
                 className='mt-2'
                 customCompnt={
                     props.searchParams.query!==""&&props.searchParams.query && <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>{props.searchParams.query}</i></u></span></p>
