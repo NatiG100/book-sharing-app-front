@@ -1,11 +1,23 @@
 import BookList from "@/components/BookList";
 import ToggleChip from "@/components/UIElements/ToggleChip";
 import { books } from "@/data";
+import { TypeBooksResponse } from "@/types/types";
 
 interface BooksProps{
     searchParams:{query:string}
 }
-export default function Books(props:BooksProps) {
+
+async function getBooks(){
+    const res = await fetch('http://localhost:1337/api/books?populate=*',{method:"GET",next:{revalidate:10}});
+    console.log(res.status);
+    if(!res.ok){
+        throw new Error('Failed to fetch books.');
+    }
+    return res.json();
+}
+export default async function Books(props:BooksProps) {
+    const bookList = await getBooks();
+    console.log(bookList.data);
     return (
         <>
             <div className="w-full max-w-[1000px] ml-auto mr-auto px-11 sm:px-20 lg:px-5 flex justify-start items-center gap-3 flex-wrap">
@@ -16,7 +28,7 @@ export default function Books(props:BooksProps) {
                 <ToggleChip isOn={false}>Others</ToggleChip>
             </div>
             <BookList 
-                books={books} 
+                books={bookList.data} 
                 title={props.searchParams.query!==""&&props.searchParams.query ?'search result':undefined} 
                 className='mt-2'
                 customCompnt={
