@@ -17,10 +17,10 @@ export default function Books(props:BooksProps) {
             </div>
             <BookList 
                 books={books} 
-                title='search result' 
+                title={props.searchParams.query!==""&&props.searchParams.query ?'search result':undefined} 
                 className='mt-2'
                 customCompnt={
-                    <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>{props.searchParams.query}</i></u></span></p>
+                    props.searchParams.query!==""&&props.searchParams.query && <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>{props.searchParams.query}</i></u></span></p>
                 }
             />
         </>     
