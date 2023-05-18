@@ -19,22 +19,22 @@ export default function BookListItem({book}:BookListItemProps){
                 <Image
                     height={800}
                     width={200}
-                    alt={book.attributes.title}
-                    src={API_URL+book.attributes.coverImg.data.attributes.formats.medium.url}
+                    alt={book.title}
+                    src={API_URL+book.coverImg.formats.medium.url}
                     className="
                         object-cover rounded-md mb-2
                         h-64 w-full
                     "
                 />
-                <p className="text-white truncate w-[90%]">{book.attributes.title}</p>
-                <p className="text-[#c1c1c1] truncate w-[90%]">By {book.attributes.author.data.attributes.fullName}</p>
+                <p className="text-white truncate w-[90%]">{book.title}</p>
+                <p className="text-[#c1c1c1] truncate w-[90%]">By {book.author.fullName}</p>
                 <div className="
                     text-[#8e8e8e] text-sm
                     flex items-center gap-4 mt-1
                 ">
-                    <div className="flex items-center gap-2"><DownloadIcon/> {book.attributes.downloads}</div>
+                    <div className="flex items-center gap-2"><DownloadIcon/> {book.downloads}</div>
                     <DotIcon className="text-white gap-2 text-[8px]"/>
-                    <div className="flex items-center gap-2"><EyeIcon/> {book.attributes.view}</div>
+                    <div className="flex items-center gap-2"><EyeIcon/> {book.view}</div>
                 </div>
             </div>
         </Link>

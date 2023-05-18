@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import {   useState } from "react";
+import {   useEffect, useState } from "react";
 import SearchBar from "./UIElements/SearchBar";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 export interface AppBarProps {
 
@@ -10,7 +10,14 @@ export interface AppBarProps {
 
 export default function AppBar(props:AppBarProps){
     const router = useRouter();
+    const pathName = useParams();
+    const searchParams = useSearchParams();
     const [query,setQuery] = useState<string>('');
+    useEffect(()=>{
+        if(searchParams.get("query")){
+            setQuery(searchParams.get("query") as string);
+        }
+    },[searchParams])
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>)=>{
         setQuery(event.target.value);
     }
