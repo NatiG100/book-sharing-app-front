@@ -9,7 +9,7 @@ interface BooksProps{
 }
 
 async function getBooks(query:string){
-    const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?q=${query}`,{
+    const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?q=${query||""}`,{
         method:"GET",
         next:{revalidate:0},
     });
@@ -32,7 +32,7 @@ export default async function Books(props:BooksProps) {
             <BookList 
                 books={bookList.hits} 
                 title={props.searchParams.query!==""&&props.searchParams.query ?'search result':"discover"} 
-                className='mt-2'
+                className='mt-2 min-h-screen'
                 customCompnt={
                     props.searchParams.query!==""&&props.searchParams.query && <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>{props.searchParams.query}</i></u></span></p>
                 }
