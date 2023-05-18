@@ -9,7 +9,7 @@ interface BooksProps{
 }
 
 async function getBooks(query:string){
-    const res = await fetch(`http://localhost:7700/indexes/book/search?q=${query}`,{
+    const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?q=${query}`,{
         method:"GET",
         next:{revalidate:0},
     });
@@ -20,7 +20,6 @@ async function getBooks(query:string){
 }
 export default async function Books(props:BooksProps) {
     const bookList = await getBooks(props.searchParams.query);
-    console.log(bookList.hits);
     return (
         <>
             <div className="w-full max-w-[1000px] ml-auto mr-auto px-11 sm:px-20 lg:px-5 flex justify-start items-center gap-3 flex-wrap">

@@ -27,7 +27,7 @@ export default function BookList({books,title,customCompnt,className=""}:BookLis
                 lg:grid-cols-[1fr,1fr,1fr,1fr]
             ">
                 {books.map((book)=>(
-                    <div className="mr-auto ml-auto" key={book._id}>
+                    <div className="mr-auto ml-auto" key={book.id}>
                         <BookListItem  book={book}/>
                     </div>
                 ))}

@@ -22,6 +22,9 @@ export default function AppBar(props:AppBarProps){
         setQuery(event.target.value);
     }
     const onSearch = ()=>{
+        if(query===""){
+            return;
+        }
         router.push(`/books?query=${query}`)
     }
     return(
