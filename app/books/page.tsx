@@ -48,21 +48,11 @@ export default async function Books(props:BooksProps) {
         return string;
     }
     const bookList = await getBooks(props.searchParams.query,getCategoryString());
-    console.log(bookList);
     return (
         <>
             <div className="w-full max-w-[1000px] ml-auto mr-auto px-11 sm:px-20 lg:px-5 flex justify-start items-center gap-3 flex-wrap">
                 <Link href={`/books?query=${props.searchParams.query}`}>
-                    <ToggleChip isOn={(function(){
-                        let isAll = true;
-                        categoryList.data.forEach((data)=>{
-                            if(data.attributes.string===props.searchParams.category){
-                                isAll = false;
-                                return;
-                            }
-                        })
-                        return isAll;
-                    })()}>All</ToggleChip>
+                    <ToggleChip isOn={!getCategoryString()}>All</ToggleChip>
                 </Link>
                 {categoryList.data.map((data)=>(
                     <Link key={data.id} href={`/books?query=${props.searchParams.query||""}&category=${data.attributes.string}`}>
