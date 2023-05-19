@@ -42,3 +42,23 @@ export interface TypeBooksResponse{
     offset: number,
     estimatedTotalHits: number
 }
+
+export interface TypeCategory{
+    id:number,
+    attributes:{
+        string:string
+    }
+}
+export interface TypeCategoriesStrapiRes{
+    data:TypeCategory[],
+    meta:TypeMeta[],
+}
+
+interface TypeMeta{
+    pagination:{
+        page:number,
+        pageSize:number,
+        pageCount:number,
+        total:number,
+    }
+}
