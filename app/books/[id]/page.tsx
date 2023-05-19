@@ -9,43 +9,58 @@ import Button from "@/components/UIElements/Button";
 import BookList from "@/components/BookList";
 import { books } from "@/data";
 import Link from "next/link";
+import { API_URL } from "@/constants/API_URL";
+import { TypeBookStrapiRes } from "@/types/types";
+
+async function getBook(id:string){
+    const res = await fetch(`${API_URL}/api/books/${id}?populate=*`,{
+        method:"GET",
+        next:{revalidate:1000}
+    });
+    if (!res.ok){
+        throw new Error("Cant fetch the book with an id of "+id);
+    }
+    return res.json();
+}
 
 interface BookProps{
     params:{id:string}
 }
-export default function Book({params}:BookProps){
+export default async function Book({params}:BookProps){
+    const book:TypeBookStrapiRes = await getBook(params.id);
     return(
         <div className="w-full">
 
             <div className="w-full max-w-[650px] ml-auto mr-auto mt-6 px-8 md:px-0">
-                <h1 className="text-3xl font-bold text-white mb-12 underline">How to study the Scripture</h1>
+                <h1 className="text-3xl font-bold text-white mb-12 underline">{book.data.attributes.title}</h1>
                 <div className="grid grid-rows-[mac-content, max-content] md:grid-cols-[max-content,1fr] gap-6">
                     <Image
-                        src='/book-cover/1.jpeg'
-                        alt="title"
+                        src={API_URL+book.data.attributes.coverImg.data.attributes.url}
+                        alt={book.data.attributes.title}
                         height={580}
                         width={300}
                         className="object-cover"
                     />
                     <div>
-                        <ToggleChip isOn={false}>Doctrine</ToggleChip>
-                        <p className="mt-2 text-[14px] text-gray-100"><span className="text-white"><b>Author:</b></span> Dr. R.C Sproul</p>
+                        <ToggleChip isOn={false}>{book.data.attributes.category.data.attributes.string}</ToggleChip>
+                        <p className="mt-2 text-[14px] text-gray-100"><span className="text-white"><b>Author:</b></span> 
+                        {book.data.attributes.author.data.attributes.fullName}</p>
                         <div className="text-gray-300 text flex items-center gap-4 mt-1">
-                            <div className="flex items-center gap-2">200 pages</div>
+                            <div className="flex items-center gap-2">{book.data.attributes.pages} pages</div>
                             <DotIcon className="text-white gap-2 text-[8px]"/>
-                            <div className="flex items-center gap-2">Published 2008EC</div>
+                            <div className="flex items-center gap-2">Published {(new Date(book.data.attributes.pubDate)).getFullYear()}</div>
                         </div>
                         <h3 className="text-white text-lg font-bold mt-6">Excerpt</h3>
                         <p className="text-gray-400 text-sm mb-6 text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            {book.data.attributes.description}
                         </p>
                         <div className="
                             text-[#8e8e8e] text-sm
                             flex items-center gap-4 mt-1
                         ">
-                            <div className="flex items-center gap-2"><DownloadIcon/> {200}</div>
+                            <div className="flex items-center gap-2"><DownloadIcon/> {book.data.attributes.downloads}</div>
                             <DotIcon className="text-white gap-2 text-[8px]"/>
-                            <div className="flex items-center gap-2"><EyeIcon/> {254}</div>
+                            <div className="flex items-center gap-2"><EyeIcon/> {book.data.attributes.view}</div>
                         </div>
                         <Link href="/book.pdf" download>
                             <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
