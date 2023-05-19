@@ -15,7 +15,7 @@ import { TypeBookStrapiRes } from "@/types/types";
 async function getBook(id:string){
     const res = await fetch(`${API_URL}/api/books/${id}?populate=*`,{
         method:"GET",
-        next:{revalidate:1000}
+        next:{revalidate:10}
     });
     if (!res.ok){
         throw new Error("Cant fetch the book with an id of "+id);
@@ -38,12 +38,12 @@ export default async function Book({params}:BookProps){
                         src={API_URL+book.data.attributes.coverImg.data.attributes.url}
                         alt={book.data.attributes.title}
                         height={580}
-                        width={300}
-                        className="object-cover"
+                        width={310}
+                        className="object-cover h-[450px]"
                     />
                     <div>
                         <ToggleChip isOn={false}>{book.data.attributes.category.data.attributes.string}</ToggleChip>
-                        <p className="mt-2 text-[14px] text-gray-100"><span className="text-white"><b>Author:</b></span> 
+                        <p className="mt-2 text-[14px] text-gray-100"><span className="text-white"><b>Author: </b></span> 
                         {book.data.attributes.author.data.attributes.fullName}</p>
                         <div className="text-gray-300 text flex items-center gap-4 mt-1">
                             <div className="flex items-center gap-2">{book.data.attributes.pages} pages</div>
