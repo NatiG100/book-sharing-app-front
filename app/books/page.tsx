@@ -5,9 +5,15 @@ import { books } from "@/data";
 import { TypeBooksResponse, TypeCategoriesStrapiRes } from "@/types/types";
 import Link from "next/link";
 
-async function getBooks(query:string){
+async function getBooks(query:string,category:string|null){
     const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?q=${query||""}`,{
-        method:"GET",
+        body:JSON.stringify({
+            filter:category&&[`category.string = ${category}`]
+        }),
+        headers:{
+            "Content-Type": "application/json",
+        },
+        method:"POST",
         next:{revalidate:0},
     });
     if(!res.ok){
@@ -30,8 +36,19 @@ interface BooksProps{
 }
 
 export default async function Books(props:BooksProps) {
-    const bookList = await getBooks(props.searchParams.query);
     const categoryList:TypeCategoriesStrapiRes = await getCategories();
+    function getCategoryString(){
+        let string= null;
+        categoryList.data.forEach((data)=>{
+            if(data.attributes.string===props.searchParams.category){
+                string = data.attributes.string;
+                return ;
+            }
+        })
+        return string;
+    }
+    const bookList = await getBooks(props.searchParams.query,getCategoryString());
+    console.log(bookList);
     return (
         <>
             <div className="w-full max-w-[1000px] ml-auto mr-auto px-11 sm:px-20 lg:px-5 flex justify-start items-center gap-3 flex-wrap">
