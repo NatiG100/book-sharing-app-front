@@ -20,7 +20,7 @@ export default function BookListItem({book}:BookListItemProps){
                     height={800}
                     width={200}
                     alt={book.title}
-                    src={API_URL+book.coverImg.formats.medium.url}
+                    src={API_URL+(book.coverImg.formats?.medium.url||book.coverImg.url)}
                     className="
                         object-cover rounded-md mb-2
                         h-64 w-full

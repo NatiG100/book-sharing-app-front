@@ -6,9 +6,10 @@ import { TypeBooksResponse, TypeCategoriesStrapiRes } from "@/types/types";
 import Link from "next/link";
 
 async function getBooks(query:string,category:string|null){
-    const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?q=${query||""}`,{
+    const res = await fetch(`${API_MEILISEARCH}/indexes/book/search`,{
         body:JSON.stringify({
-            filter:category&&[`category.string = ${category}`]
+            filter:category&&[`category.string = ${category}`],
+            q:query||"",
         }),
         headers:{
             "Content-Type": "application/json",
