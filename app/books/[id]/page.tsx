@@ -12,6 +12,7 @@ import Link from "next/link";
 import { API_URL } from "@/constants/API_URL";
 import { TypeBookStrapiRes } from "@/types/types";
 import {useRouter} from 'next/navigation'
+import DownloadBtn from "@/components/DownloadBtn";
 
 async function getBook(id:string){
     const res = await fetch(`${API_URL}/api/books/${id}?populate=*`,{
@@ -20,16 +21,6 @@ async function getBook(id:string){
     });
     if (!res.ok){
         throw new Error("Cant fetch the book with an id of "+id);
-    }
-    return res.json();
-}
-async function incrementView(id:string){
-    const res = await fetch(`${API_URL}/api/view/${id}`,{
-        method:"POST",
-        next:{revalidate:0}
-    });
-    if (!res.ok){
-        throw new Error("Can't view book");
     }
     return res.json();
 }
@@ -83,11 +74,12 @@ export default async function Book({params}:BookProps){
                             <DotIcon className="text-white gap-2 text-[8px]"/>
                             <div className="flex items-center gap-2"><EyeIcon/> {book.data.attributes.view}</div>
                         </div>
-                        <Link href={`${API_URL}/"${book.data.attributes.file.data.attributes.url}"`}>
+                        {/* <Link href={`${API_URL}/"${book.data.attributes.file.data.attributes.url}"`}>
                             <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
                                 Download
                             </Button>
-                        </Link>
+                        </Link> */}
+                        <DownloadBtn url={book.data.attributes.file.data.attributes.url} id={params.id}>Download</DownloadBtn>
                         <Link href={`/read/?url=${book.data.attributes.file.data.attributes.url}&id=${params.id}`}>
                             <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} onClick={()=>{}} >
                                 Read now

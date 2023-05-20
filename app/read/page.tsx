@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'
 import {AiFillCloseCircle as CloseIcon} from 'react-icons/ai'
 import { API_URL } from '@/constants/API_URL';
 import { useEffect } from 'react';
