@@ -25,7 +25,7 @@ async function getBooks(query:string,category:string|null){
 async function getCategories(){
     const res = await fetch(`${API_URL}/api/categories`,{
         method:"GET",
-        next:{revalidate:1000}
+        next:{revalidate:10}
     });
     if(!res.ok){
         throw new Error("Failed to fetch categories");

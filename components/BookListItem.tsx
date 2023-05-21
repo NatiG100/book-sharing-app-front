@@ -23,7 +23,7 @@ export default function BookListItem({book}:BookListItemProps){
                     src={API_URL+(book.coverImg.formats?.medium.url||book.coverImg.url)}
                     className="
                         object-cover rounded-md mb-2
-                        h-64 w-full
+                        h-64 w-full bg-black/20
                     "
                 />
                 <p className="text-white truncate w-[90%]">{book.title}</p>
