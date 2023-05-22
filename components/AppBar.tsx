@@ -46,7 +46,7 @@ export default function AppBar(props:AppBarProps){
                         className="
                             border border-[#66de74] uppercase font-mono text-[#66de74] py-2 px-6 rounded-full 
                             hover:bg-[#66de74] hover:text-black transition-colors duration-500 text-center
-                            
+                            saturate-200
                         "
                     >Discover</Link>
                     <SearchBar value={query} onChange={handleChange} onSearch={onSearch}/>

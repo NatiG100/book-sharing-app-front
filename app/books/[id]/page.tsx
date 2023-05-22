@@ -11,6 +11,7 @@ import Link from "next/link";
 import { API_MEILISEARCH, API_URL } from "@/constants/API_URL";
 import { TypeBookStrapiRes, TypeBooksResponse } from "@/types/types";
 import DownloadBtn from "@/components/DownloadBtn";
+import TogleTxt from "@/components/UIElements/TogleTxt";
 
 async function getBooksByAuthor(authorName:string){
     const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?filter="author.name='${authorName}'"`,{
@@ -74,7 +75,9 @@ export default async function Book({params}:BookProps){
                         </div>
                         <h3 className="text-white text-lg font-bold mt-6">Excerpt</h3>
                         <p className="text-gray-400 text-sm mb-6 text-justify">
+                            <TogleTxt>
                             {book.data.attributes.description}
+                            </TogleTxt> 
                         </p>
                         <div className="
                             text-[#8e8e8e] text-sm
