@@ -7,12 +7,21 @@ import {
 } from 'react-icons/fi';
 import Button from "@/components/UIElements/Button";
 import BookList from "@/components/BookList";
-import { books } from "@/data";
 import Link from "next/link";
-import { API_URL } from "@/constants/API_URL";
-import { TypeBookStrapiRes } from "@/types/types";
-import {useRouter} from 'next/navigation'
+import { API_MEILISEARCH, API_URL } from "@/constants/API_URL";
+import { TypeBookStrapiRes, TypeBooksResponse } from "@/types/types";
 import DownloadBtn from "@/components/DownloadBtn";
+
+async function getBooksByAuthor(authorName:string){
+    const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?filter="author.name='${authorName}'"`,{
+        method:"GET",
+        next:{revalidate:0},
+    });
+    if(!res.ok){
+      throw new Error('Failed to fetch books.');
+    }
+    return res.json();
+  }
 
 async function getBook(id:string){
     const res = await fetch(`${API_URL}/api/books/${id}?populate=*`,{
@@ -40,6 +49,7 @@ interface BookProps{
 }
 export default async function Book({params}:BookProps){
     const book:TypeBookStrapiRes = await getBook(params.id);
+    const booksByThisAuthor:TypeBooksResponse = await getBooksByAuthor(book.data.attributes.author.data.attributes.fullName);
     return(
         <div className="w-full">
 
@@ -89,7 +99,7 @@ export default async function Book({params}:BookProps){
                 </div>
             </div>
             <BookList 
-                books={books}  
+                books={booksByThisAuthor.hits}  
                 className="mt-16"
                 customCompnt={<p className="text-xs md:text-lg font-semibold text-gray-300 bg-gray-800 rounded-md p-1 px-4 md:px-6">Other books from this author</p>}
             />
