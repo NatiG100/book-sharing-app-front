@@ -3,6 +3,7 @@ import Image from "next/image";
 import {   useEffect, useState } from "react";
 import SearchBar from "./UIElements/SearchBar";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export interface AppBarProps {
 
@@ -39,7 +40,17 @@ export default function AppBar(props:AppBarProps){
                     width={80}
                     height={100}
                 />
-                <SearchBar value={query} onChange={handleChange} onSearch={onSearch}/>
+                <div className="flex items-center justify-end w-full gap-4 md:flex-row flex-col">
+                    <Link 
+                        href={'/books'}
+                        className="
+                            border border-[#66de74] uppercase font-mono text-[#66de74] py-2 px-6 rounded-full 
+                            hover:bg-[#66de74] hover:text-black transition-colors duration-500 text-center
+                            
+                        "
+                    >Discover</Link>
+                    <SearchBar value={query} onChange={handleChange} onSearch={onSearch}/>
+                </div>
             </div>
         </div>
     );

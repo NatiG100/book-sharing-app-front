@@ -14,7 +14,7 @@ async function getPopularBooks(){
   return res.json();
 }
 async function getRecentBooks(){
-  const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?sort=createdAt:asc&limit=8`,{
+  const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?sort=createdAt:desc&limit=8`,{
       method:"GET",
       next:{revalidate:0},
   });
