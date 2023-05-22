@@ -34,19 +34,21 @@ export default function AppBar(props:AppBarProps){
                 w-full max-w-[1480px] ml-auto mr-auto gap-6
                 flex p-2 px-7 items-center justify-between flex-col md:flex-row z-50
             ">
-                <Image
-                    src="/logo.png"
-                    alt="logo"
-                    width={80}
-                    height={100}
-                />
+                <Link href="/">
+                    <Image
+                        src="/logo.png"
+                        alt="logo"
+                        width={80}
+                        height={100}
+                    />
+                </Link>
                 <div className="flex items-center justify-end w-full gap-4 md:flex-row flex-col">
                     <Link 
                         href={'/books'}
                         className="
                             border border-[#66de74] uppercase font-mono text-[#66de74] py-2 px-6 rounded-full 
                             hover:bg-[#66de74] hover:text-black transition-colors duration-500 text-center
-                            saturate-200
+                            saturate-100
                         "
                     >Discover</Link>
                     <SearchBar value={query} onChange={handleChange} onSearch={onSearch}/>
