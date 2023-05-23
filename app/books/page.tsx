@@ -4,6 +4,8 @@ import { API_MEILISEARCH, API_URL } from "@/constants/API_URL";
 import { books } from "@/data";
 import { TypeBooksResponse, TypeCategoriesStrapiRes } from "@/types/types";
 import Link from "next/link";
+import Skeleton,{SkeletonTheme} from "react-loading-skeleton";
+
 
 async function getBooks(query:string,category:string|null){
     const res = await fetch(`${API_MEILISEARCH}/indexes/book/search`,{
