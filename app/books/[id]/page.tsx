@@ -13,6 +13,9 @@ import { TypeBookStrapiRes, TypeBooksResponse } from "@/types/types";
 import DownloadBtn from "@/components/DownloadBtn";
 import TogleTxt from "@/components/UIElements/TogleTxt";
 
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
+
 async function getBooksByAuthor(authorName:string){
     const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?filter="author.name='${authorName}'"`,{
         method:"GET",
@@ -77,7 +80,8 @@ export default async function Book({params}:BookProps){
                         <p className="text-gray-400 text-sm mb-6 text-justify">
                             <TogleTxt>
                             {book.data.attributes.description}
-                            </TogleTxt> 
+                            </TogleTxt>
+ 
                         </p>
                         <div className="
                             text-[#8e8e8e] text-sm

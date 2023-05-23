@@ -6,6 +6,7 @@ import AppBar from '@/components/AppBar'
 import FooterSection from '@/components/Sections/Footer'
 import HeaderBackdrop from '@/components/HeaderBackdrop'
 import {usePathname} from 'next/navigation';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
