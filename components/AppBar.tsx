@@ -15,7 +15,7 @@ export default function AppBar(props:AppBarProps){
     const searchParams = useSearchParams();
     const [query,setQuery] = useState<string>('');
     useEffect(()=>{
-        if(searchParams.get("query")){
+        if(searchParams?.get("query")){
             setQuery(searchParams.get("query") as string);
         }
     },[searchParams])
@@ -36,10 +36,10 @@ export default function AppBar(props:AppBarProps){
             ">
                 <Link href="/">
                     <Image
-                        src="/logo.png"
+                        src="/logoAt-01.png"
                         alt="logo"
-                        width={80}
-                        height={100}
+                        width={135}
+                        height={120}
                     />
                 </Link>
                 <div className="flex items-center justify-end w-full gap-4 md:flex-row flex-col">
