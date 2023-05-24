@@ -29,7 +29,7 @@ export default function RootLayout({
             children
           :
             <>
-              <div className={`w-full relative ${pathName==="/"?"h-screen":"h-[200px] md:h-[150px]"}`}>
+              <div className={`w-full relative ${pathName==="/"?"h-screen":"h-[250px] md:h-[150px]"}`}>
                 {pathName==="/"?<HeroSection/>:<HeaderBackdrop/>}
                 <AppBar/>
               </div>
