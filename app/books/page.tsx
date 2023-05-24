@@ -70,6 +70,7 @@ export default async function Books(props:BooksProps) {
                 customCompnt={
                     props.searchParams.query!==""&&props.searchParams.query && <p className="text-gray-500">Search result for <span className="text-gray-400"><u><i>{props.searchParams.query}</i></u></span></p>
                 }
+                noDataTxt="Empty search result!"
             />
         </>     
     )

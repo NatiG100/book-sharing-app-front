@@ -105,11 +105,12 @@ export default async function Book({params}:BookProps){
                     </div>
                 </div>
             </div>
-            <BookList 
+            {booksByThisAuthor?.hits?.length!==0&&<BookList
+                noDataTxt="No other books found by this author" 
                 books={booksByThisAuthor.hits}  
                 className="mt-16"
                 customCompnt={<p className="text-xs md:text-lg font-semibold text-gray-300 bg-gray-800 rounded-md p-1 px-4 md:px-6">Other books from this author</p>}
-            />
+            />}
         </div>
     );
 }
