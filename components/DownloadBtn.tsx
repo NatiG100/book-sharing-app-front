@@ -10,6 +10,7 @@ export interface DownloadBtnProps{
     children:string,
 }
 async function incrementDownload(id:string){
+    "use client";
     const res = await fetch(`${API_URL}/api/download/${id}`,{
         method:"POST",
     });
@@ -19,14 +20,24 @@ async function incrementDownload(id:string){
     return res.json();
 }
 export default function DownloadBtn({url,id,children}:DownloadBtnProps){
-    const handleClick = useCallback(async()=>{
-        await incrementDownload(id);
-    },[id])
+    const downloadURI = (uri:string, name:string) => {
+        const link = document.createElement("a");
+        link.setAttribute("download","")
+        
+        link.href = uri;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    const handleClick = async ()=>{
+        await incrementDownload(id).then(()=>{
+            console.log("This is working")
+            downloadURI(`${API_URL}${url}`,"book"+id)
+        });
+    }
     return(
-        <Link href={`${API_URL}${url}`} download={true} onClick={handleClick}>
-            <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={()=>{}} >
-                {children}
-            </Button>
-        </Link>
+        <Button className="w-full uppercase text-white bg-[#42AA4F]" icon={<DownloadIcon/>} onClick={handleClick} >
+            {children}
+        </Button>
     );
 }

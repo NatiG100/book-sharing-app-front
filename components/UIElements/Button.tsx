@@ -1,5 +1,7 @@
+"use client";
+
 export interface ButtonProps{
-    onClick:()=>void,
+    onClick?:()=>void,
     className:string,
     children:string,
     icon:React.ReactNode,
@@ -7,7 +9,7 @@ export interface ButtonProps{
 
 export default function Button(props:ButtonProps){
     return(
-        <button className={"border-0 rounded-md px-4 h-10 flex items-center justify-center gap-3 my-2 hover:saturate-150 "+props.className}>
+        <button onClick={props.onClick} className={"border-0 rounded-md px-4 h-10 flex items-center justify-center gap-3 my-2 hover:saturate-150 "+props.className}>
             {props.icon}
             {props.children}
         </button>

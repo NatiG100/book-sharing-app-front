@@ -96,9 +96,9 @@ export default async function Book({params}:BookProps){
                                 Download
                             </Button>
                         </Link> */}
-                        <DownloadBtn url={book.data.attributes.file.data.attributes.url} id={params.id}>Download</DownloadBtn>
+                        <DownloadBtn url={book.data.attributes.file.data.attributes.url} id={book.data.id.toString()}>Download</DownloadBtn>
                         <Link href={`/read/?url=${book.data.attributes.file.data.attributes.url}&id=${params.id}`}>
-                            <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} onClick={()=>{}} >
+                            <Button className="w-full uppercase text-white bg-[#5B7ABA]" icon={<EyeIcon/>} >
                                 Read now
                             </Button>
                         </Link>
