@@ -31,7 +31,6 @@ export default function DownloadBtn({url,id,children}:DownloadBtnProps){
     }
     const handleClick = async ()=>{
         await incrementDownload(id).then(()=>{
-            console.log("This is working")
             downloadURI(`${API_URL}${url}`,"book"+id)
         });
     }

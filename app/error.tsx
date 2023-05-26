@@ -9,9 +9,9 @@ export default function Error({
     error:Error,
     reset:()=>void
 }){
-    useEffect(()=>{
-        console.error(error);
-    })
+    // useEffect(()=>{
+    //     console.error(error);
+    // })
     return(
         <div className="w-full max-h-full flex items-center flex-col gap-4 justify-center h-[450px]">
             <h1 className="text-white text-4xl md:text-6xl font-semibold text-center">Oops!</h1>
