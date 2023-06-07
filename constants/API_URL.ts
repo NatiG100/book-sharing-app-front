@@ -1,2 +1,2 @@
-export const API_URL = "http://localhost:1337";
-export const API_MEILISEARCH = "http://localhost:7700";
+export const API_URL = "https://book-sharing-cms.onrender.com";
+export const API_MEILISEARCH = "https://meilisearch-production-c96a.up.railway.app";
