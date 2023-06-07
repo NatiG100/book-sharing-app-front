@@ -16,7 +16,7 @@ export default function BookListItem({book}:BookListItemProps){
     return(
         <Link href={`/books/${book.id}`} className="w-max">
             <div className="w-[175px] cursor-pointer hover:-translate-y-2 transition-transform duration-300 m-4">
-                <Image
+                <img
                     height={800}
                     width={200}
                     alt={book.title}

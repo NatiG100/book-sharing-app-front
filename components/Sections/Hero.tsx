@@ -4,7 +4,7 @@ export default function HeroSection(){
     return(
         <section className="absolute h-screen w-full  left-0 right-0 top-0">
             <div className="relative h-full w-full">
-                <Image
+                <img
                     src="/books.jpg"
                     height={400}
                     width={700}

@@ -35,7 +35,7 @@ export default function AppBar(props:AppBarProps){
                 flex p-2 px-7 items-center justify-between flex-col md:flex-row z-50
             ">
                 <Link href="/">
-                    <Image
+                    <img
                         src="/logoAt-01.png"
                         alt="logo"
                         width={135}

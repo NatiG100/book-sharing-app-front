@@ -63,7 +63,7 @@ export default async function Book({params}:BookProps){
             <div className="w-full max-w-[650px] ml-auto mr-auto mt-6 px-8 md:px-0">
                 <h1 className="text-3xl font-bold text-white mb-12 underline">{book.data.attributes.title}</h1>
                 <div className="grid grid-rows-[mac-content, max-content] md:grid-cols-[max-content,1fr] gap-6">
-                    <Image
+                    <img
                         src={API_URL+book.data.attributes.coverImg.data.attributes.url}
                         alt={book.data.attributes.title}
                         height={580}
