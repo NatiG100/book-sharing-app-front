@@ -7,6 +7,9 @@ async function getPopularBooks(){
   const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?sort=downloads:desc,view:desc&limit=8`,{
       method:"GET",
       next:{revalidate:0},
+      headers:{
+        Authorization: "Bearer NatnaelGashu12!@"
+      }
   });
   if(!res.ok){
     throw new Error('Failed to fetch books.');
@@ -17,6 +20,9 @@ async function getRecentBooks(){
   const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?sort=createdAt:desc&limit=8`,{
       method:"GET",
       next:{revalidate:0},
+      headers:{
+        Authorization: "Bearer NatnaelGashu12!@"
+      }
   });
   if(!res.ok){
     throw new Error('Failed to fetch books.');

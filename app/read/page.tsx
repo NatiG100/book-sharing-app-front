@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 async function incrementView(id:string){
     const res = await fetch(`${API_URL}/api/view/${id}`,{
         method:"POST",
-        next:{revalidate:0}
+        next:{revalidate:0},
     });
     if (!res.ok){
         throw new Error("Can't view book");

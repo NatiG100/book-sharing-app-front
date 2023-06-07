@@ -20,6 +20,9 @@ async function getBooksByAuthor(authorName:string){
     const res = await fetch(`${API_MEILISEARCH}/indexes/book/search?filter="author.name='${authorName}'"`,{
         method:"GET",
         next:{revalidate:0},
+        headers:{
+          Authorization: "Bearer NatnaelGashu12!@"
+        }
     });
     if(!res.ok){
       throw new Error('Failed to fetch books.');
@@ -30,7 +33,7 @@ async function getBooksByAuthor(authorName:string){
 async function getBook(id:string){
     const res = await fetch(`${API_URL}/api/books/${id}?populate=*`,{
         method:"GET",
-        next:{revalidate:0}
+        next:{revalidate:0},
     });
     if (!res.ok){
         throw new Error("Cant fetch the book with an id of "+id);
@@ -40,7 +43,7 @@ async function getBook(id:string){
 async function incrementDownload(id:string){
     const res = await fetch(`${API_URL}/api/download/${id}`,{
         method:"POST",
-        next:{revalidate:0}
+        next:{revalidate:0},
     });
     if (!res.ok){
         throw new Error("Can't download book");

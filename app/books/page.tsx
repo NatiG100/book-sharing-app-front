@@ -15,6 +15,7 @@ async function getBooks(query:string,category:string|null){
         }),
         headers:{
             "Content-Type": "application/json",
+            Authorization: "Bearer NatnaelGashu12!@"
         },
         method:"POST",
         next:{revalidate:0},
